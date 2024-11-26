@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+      overflow: hidden;
+      color: white;
+      text-align: center;
+      height: 100vh;
+    }
+
+    /* Top Images */
+    .top-image {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border: 3px solid white;
+    }
+
+    .top-left {
+      top: 60px; /* Adds space on top */
+      left: 60px; /* Adds space on left */
+    }
+
+    .top-right {
+      top: 60px; /* Adds space on top */
+      right: 60px; /* Adds space on right */
+    }
+
+    /* Greeting Section */
+    .container {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .title {
+      font-size: 4rem;
+      font-weight: bold;
+      animation: glow 2s infinite alternate;
+      text-shadow: 0 0 10px #fff, 0 0 20px #ff8c00, 0 0 30px #ffa500;
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      opacity: 0;
+      animation: fadeIn 2s forwards 2s;
+    }
+
+    /* Surprise Button */
+    .reveal-btn {
+      margin-top: 2rem;
+      padding: 10px 20px;
+      background: #ff4500;
+      border: none;
+      border-radius: 25px;
+      font-size: 1.2rem;
+      color: white;
+      cursor: pointer;
+      animation: fadeIn 2s forwards 3s;
+      display: none;
+    }
+
+    /* Hidden Message */
+    .hidden-message {
+      display: none;
+      margin-top: 2rem;
+      font-size: 1.5rem;
+      font-style: italic;
+      color: #ffe4e1;
+      animation: fadeInScale 1.5s forwards;
+    }
+
+    /* Animations */
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 10px #fff, 0 0 20px #ff8c00, 0 0 30px #ffa500, 0 0 40px #ffa500;
+      }
+      100% {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff8c00, 0 0 40px #ffa500, 0 0 50px #ffa500;
+      }
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInScale {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Background Confetti Animation */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      animation: fall 3s infinite linear;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100vh);
+      }
+      100% {
+        transform: translateY(100vh);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Images -->
+  <img src="IMG_E8365.JPG" alt="Top Left Image" class="top-image top-left">
+  <img src="IMG_E8366.JPG" alt="Top Right Image" class="top-image top-right">
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1 class="title">Happy Birthday!!!</h1>
+    <p class="subtitle">Happy Birthday to one of the most amazing people in my life 🎉 Hope your day is as awesome as you are. Wishing you a year full of good vibes, great memories, and everything you enjoy❤️</p>
+
+    <!-- Surprise Button -->
+    <button class="reveal-btn" onclick="showMessage()">Click to Reveal a Surprise</button>
+
+    <!-- Hidden Surprise Message -->
+    <p class="hidden-message" id="hiddenMessage">neg nasaar hogshirsond ni bayr hurgey ge xD minii nz bolj tursund mash ih bayrldagdaa, hetsuu uyd nadtai yriltsaj, urgelj namaig demjij, chadah buhneeree tusaldag ged minii tuluu hiisen buh zuild n uneheer bayrlaj yvdag shuu. zaa tgd saihan bayrlaarai belgiin neg nartai udur ugnuu nz ni xD </p>
+  </div>
+
+  <!-- Confetti Animation -->
+  <div id="confetti-container"></div>
+
+  <script>
+    // Add Confetti
+    const confettiContainer = document.getElementById('confetti-container');
+
+    for (let i = 0; i < 100; i++) {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.animationDuration = Math.random() * 2 + 3 + 's';
+      confettiContainer.appendChild(confetti);
+    }
+
+    // Reveal Message
+    function showMessage() {
+      const hiddenMessage = document.getElementById('hiddenMessage');
+      hiddenMessage.style.display = 'block';
+    }
+
+    // Button Visibility after Animation
+    document.querySelector('.reveal-btn').style.display = 'inline-block';
+  </script>
+</body>
+</html>
